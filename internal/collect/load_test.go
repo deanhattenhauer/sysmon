@@ -55,7 +55,7 @@ func TestParseLoad(t *testing.T) {
 				return
 			}
 			if got != tt.want {
-				t.Errorf("parseLoad(%q) error = %v, want %v", tt.in, got, tt.want)
+				t.Errorf("parseLoad(%q) = %v, want %v", tt.in, got, tt.want)
 			}
 		})
 	}
