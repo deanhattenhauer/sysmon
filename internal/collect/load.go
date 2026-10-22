@@ -2,6 +2,7 @@ package collect
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -34,4 +35,12 @@ func parseLoad(content string) (Load, error) {
 	}
 
 	return Load{One: one, Five: five, Fifteen: fifteen}, nil
+}
+
+func ReadLoad() (Load, error) {
+	data, err := os.ReadFile("/proc/loadavg")
+	if err != nil {
+		return Load{}, fmt.Errorf("reading load: %w", err)
+	}
+	return parseLoad(string(data))
 }
